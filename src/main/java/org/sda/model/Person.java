@@ -16,6 +16,17 @@ public class Person {
     private String phoneNumber;
     private String address; //Source address
 
+    protected boolean isAlive;
+
+
+    protected boolean isAlive() {
+        return isAlive;
+    }
+
+    protected void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
     // All arguments constructor
     public Person(Long id, String firstName, String lastName, String email, String phoneNumber, String address) {
         this.id = id;
@@ -103,4 +114,6 @@ public class Person {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+
 }
