@@ -85,8 +85,22 @@ public class Main {
         // Enums
         System.out.println(PaymentType.CARD);
         System.out.println(PaymentType.values()); // Ei prindi kuna pole arrays to string
-        System.out.println(Arrays.toString(PaymentType.values())); // Prints all the enum values
         System.out.println(PaymentType.BANK_TRANSFER.getValue()); // Annab mulle value, mis ma bank transferile panin paymenttype enumi alt.
+
+        for(PaymentType paymentType: PaymentType.values()) {
+            System.out.println(paymentType.name());
+        }
+
+        System.out.println(PaymentType.MOBILE_BANKING.toString());
+
+
+        // Enum(planet) exercise
+        System.out.println(">>>>>>>>>>>>>>PLANETS<<<<<<<<<<<<<<<<<<<");
+        System.out.println(Planets.Jupiter.toString());
+        System.out.println("Distance of " + Planets.Jupiter.name() + " from Earth: " + Planets.Jupiter.distanceFromEarth());
+        System.out.println("------------------");
+        System.out.println(Planets.Mars.toString());
+        System.out.println("Distance of " + Planets.Mars.name() + " from Earth: "+ Planets.Mars.distanceFromEarth()) ;
     }
 
     private static void printPersonAddress(Person person) {
