@@ -1,6 +1,6 @@
 package org.sda.homeworks;
 
-public class Dog {
+public class Dog extends Animal{
 
     private String Name;
 
@@ -11,6 +11,10 @@ public class Dog {
     public Dog(String name, int age, String yieldVoice) {
         Name = name;
         this.age = age;
+        this.yieldVoice = yieldVoice;
+    }
+
+    public Dog(String yieldVoice) {
         this.yieldVoice = yieldVoice;
     }
 

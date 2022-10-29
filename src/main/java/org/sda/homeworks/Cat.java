@@ -1,6 +1,6 @@
 package org.sda.homeworks;
 
-public class Cat {
+public class Cat extends Animal{
 
    private String Name;
 
@@ -14,13 +14,11 @@ public class Cat {
         this.yieldVoice = yieldVoice;
     }
 
-    public String getYieldVoice() {
-        return yieldVoice;
-    }
-
-    public void setYieldVoice(String yieldVoice) {
+    public Cat(String yieldVoice) {
         this.yieldVoice = yieldVoice;
-    }
+
+
+}
 
     public String getName() {
         return Name;
@@ -38,4 +36,11 @@ public class Cat {
         this.age = age;
     }
 
+    public String getYieldVoice() {
+        return yieldVoice;
+    }
+
+    public void setYieldVoice(String yieldVoice) {
+        this.yieldVoice = yieldVoice;
+    }
 }
