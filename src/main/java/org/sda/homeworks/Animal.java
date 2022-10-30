@@ -5,13 +5,13 @@ public class Animal {
 
     public static void main(String[] args) {
 
-        Cat cat = new Cat("Mia",31);
-        Dog dog = new Dog("Pepe", 12);
+        Cat cat = new Cat("Mia",31,"Meow");
+        Dog dog = new Dog("Pepe", 12,"Auh,Auh");
 
         String[] animals = {"cat", "dog"};
 
         for (String animal : animals) {
-            System.out.println(animal + setAnimalYieldVoice(););
+            System.out.println(animal);
         }
     }
 
