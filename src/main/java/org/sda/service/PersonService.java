@@ -1,5 +1,6 @@
 package org.sda.service;
 
+import org.sda.exceptions.PersonNotFoundException;
 import org.sda.models.Person;
 
 import java.time.LocalDate;
@@ -27,7 +28,16 @@ public interface PersonService {    // In Interface dont start with public/priva
      * @param person Person model
      * @return Full name as String
      */
+
     String getPersonFullName(Person person);
+
+    /**
+     * To find the Person by first name
+     * @param firstName Firstname of a Person
+     * @return Person
+     */
+    Person findPersonByFirstName(String firstName) throws PersonNotFoundException;
+
 
     //static method definition is allowed   for example:
     static int getAverageAge() {
