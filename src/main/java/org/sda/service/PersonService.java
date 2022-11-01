@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 public interface PersonService {    // In Interface dont start with public/private jne, alustab kohe meetodist. Alati kui interfacele kirjutad selgitust, siis alati kirjutada juurde mida
                                     // mingi asi tähendab. Ainult methodi deklareerimine ja selgitus on interfaces.
+                                    // All methods are public and abstract by default, cant define protected/private methods.
     static final int AVERAGE_AGE = 20; // See näide, saab deklareerida static fielde, aga ei saa kirjutada nt int averageAge = 20;
 
     /**

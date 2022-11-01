@@ -1,11 +1,16 @@
 package org.sda;
 
+import org.sda.abstracts.Food;
+import org.sda.abstracts.Fruit;
+import org.sda.abstracts.Veggie;
 import org.sda.exceptions.PersonNotFoundException;
 import org.sda.models.Person;
 import org.sda.service.PersonService;
 import org.sda.service.implementations.PersonServiceImpl;
 
 import javax.xml.namespace.QName;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws PersonNotFoundException {
@@ -65,5 +70,39 @@ public class Main {
             testPerson.setAge(10);
         }
         System.out.println(testPerson.toString());
+
+
+        // Homework exercise - exception handling
+
+        try {
+            displayNumber();
+            Scanner scanner = new Scanner(System.in);
+            int i = scanner.nextInt();
+            System.out.println("int -> " + i);
+        } catch(InputMismatchException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+
+        // Abstract class
+        Fruit fruit = new Fruit("Red");
+        fruit.eat();
+
+        Food food = new Veggie("Green"); // We cannot instantiate (new Food()), but you can assign the child class to the abstract class
+        food.eat();
+    }
+
+    public static void displayNumber() {
+
+        Scanner scanner = new Scanner(System.in);
+        if(scanner.hasNextInt()) {
+            int i = scanner.nextInt();
+            System.out.println("int -> " + i);
+        } else if(scanner.hasNextDouble()) {
+            double d = scanner.nextDouble();
+            System.out.println("double -> " + d);
+        } else {
+            throw new InputMismatchException("Hey, that´s not a value! Try once more!");
+        }
     }
 }
