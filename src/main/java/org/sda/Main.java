@@ -28,6 +28,7 @@ public class Main {
         int menuOption = getMenu();
         System.out.println("-------------");
         System.out.println("-----MENU-----");
+        System.out.println("-------------");
 
         switch(menuOption) {
             case 1: // Add item
