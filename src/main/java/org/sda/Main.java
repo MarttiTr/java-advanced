@@ -26,6 +26,8 @@ public class Main {
 
     private static void menuOperation(List<String> shoppingBag) {
         int menuOption = getMenu();
+        System.out.println("-------------");
+        System.out.println("-----MENU-----");
 
         switch(menuOption) {
             case 1: // Add item
