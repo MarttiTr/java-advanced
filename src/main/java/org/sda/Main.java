@@ -2,6 +2,7 @@ package org.sda;
 
 import org.sda.generics.*;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -130,5 +131,34 @@ public class Main {
         detailsMap.put("vinod", vinodInfoMap);
 
         System.out.println(detailsMap);
+
+
+        // Input & Output (I/O)
+        // creating a file object
+        File absoluteFile = new File("C:\\Users\\37256\\main\\java-advanced\\src\\main\\resources\\myText.txt");
+        File relativeFile = new File("myText.txt");
+
+        // File reading (reading mytext.txt line)
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(absoluteFile));
+            String fileLine; // To store the line of text from the file.
+
+            while((fileLine = bufferedReader.readLine()) != null) {
+                System.out.println(fileLine);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // File writing
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(absoluteFile, true));
+            String fileLine = "\n I can write error-less Java code :D";
+            bufferedWriter.write(fileLine);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
