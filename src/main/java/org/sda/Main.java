@@ -3,11 +3,11 @@ package org.sda;
 import org.sda.generics.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
+
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // GENERIC TYPE
         Fruit fruit = new Fruit();
@@ -66,10 +66,69 @@ public class Main {
 
         animalList.removeAll(removeAnimalList);
 
+        // Final Removed list
         for(String animal: animalList) {
             System.out.println(animal);
         }
 
 
+        // SET - on case sensitive
+        Set<String> countrySet = new HashSet<>();
+        countrySet.add("Eesti");
+        countrySet.add("Saksamaa");
+        countrySet.add("Poola");
+        countrySet.add("Rootsi");
+        // countrySet.add("Eesti"); -> Duplicates not allowed.
+
+        for (String country: countrySet) { // Non-sorted, randomly stored
+            System.out.println(country);
+        }
+
+        System.out.println("Before sorting: " + countrySet);
+        TreeSet<String> countryTreeset = new TreeSet<>(countrySet); // Stored as sorted alphabetically
+        System.out.println("After sorting: " + countryTreeset);
+
+
+        // MAP
+        // 1) Map of fullname
+        Map<String, String> fullName = new HashMap<>(); // Non sorted as stored
+        fullName.put("Vinod", "John"); // Esimene on key, teine on value.
+        fullName.put("Martti", "Triksberg");
+        fullName.put("Marko", "Piir");
+
+        System.out.println(fullName);
+        System.out.println(fullName.get("Vinod")); // Vinod: on key, mis annab value milleks on: John
+        System.out.println(fullName.remove("Marko"));
+
+        System.out.println(fullName);
+
+        // 2) Map of name and age
+        Map<String, Integer> nameAndAge = new HashMap<>();
+        nameAndAge.put("Martti", 22);
+        nameAndAge.put("Vinod", 32);
+        nameAndAge.put("Marko", 22);
+
+        System.out.println(nameAndAge);
+
+        // 3) Map of friends(Map of List)
+        Map <String, List<String>> friendsMap = new HashMap<>();
+        List<String> marttiFriendList = List.of("Tony", "Marko", "Tiina");
+        List<String> tiinaFriendList = List.of("Joosep", "Kätlin", "Karl");
+
+        friendsMap.put("Martti", marttiFriendList);
+        friendsMap.put("Tiina", tiinaFriendList);
+
+        System.out.println(friendsMap);
+
+        // 4) Map of maps
+        Map<String, Map<String, String>> detailsMap = new HashMap<>();
+        Map<String, String> vinodInfoMap = new HashMap<>();
+        vinodInfoMap.put("age", "15");
+        vinodInfoMap.put("birthPlace", "Tartu");
+        vinodInfoMap.put("residence", "Estonia");
+        vinodInfoMap.put("phone", "123456");
+        detailsMap.put("vinod", vinodInfoMap);
+
+        System.out.println(detailsMap);
     }
 }
