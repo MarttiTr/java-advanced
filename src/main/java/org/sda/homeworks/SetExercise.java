@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class SetExercise {
 
-    boolean hasMoreColours = true;
+    boolean hasMoreColours;
     static Scanner scanner = new Scanner(System.in);
     String errorMessage = "Thats not a valid answer, Please enter again:";
     public Set<String> colours;
@@ -30,24 +30,36 @@ public class SetExercise {
         colours.add(scanner.next());
     }
 
-
     public boolean hasMoreColoursToGive() {
+
+        System.out.println("Do you want to add more colours? (true/false)");
 
             while(!hasMoreColours) {
 
-                System.out.println("Do you want to add more colours?");
                 hasMoreColours = scanner.nextBoolean();
 
-                if(hasMoreColours) {
+                if(hasMoreColours == true) {
                     colours.add(scanner.next());
-                    return false;
+                    System.out.println("Do you want to add more colours? (true/false)");
+                    scanner.nextBoolean();
+                    if(scanner.nextBoolean() == true) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
                 } else {
-                    return true;
+                    return false;
                 }
             }
+        return false;
     }
 
+    public String printColourList() {
+        Set<String> ColourList = colours;
 
+        return String.valueOf(ColourList.toArray());
+    }
 
 
 
