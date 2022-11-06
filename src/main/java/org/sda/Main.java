@@ -90,7 +90,7 @@ public class Main {
         System.out.println("After sorting: " + countryTreeset);
 
 
-        // MAP
+        // MAP - A Map is an object that maps keys to values. A map cannot contain duplicate keys: Each key can map to at most one value.
         // 1) Map of fullname
         Map<String, String> fullName = new HashMap<>(); // Non sorted as stored
         fullName.put("Vinod", "John"); // Esimene on key, teine on value.
@@ -152,7 +152,7 @@ public class Main {
 
         // File writing
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(absoluteFile, true));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(absoluteFile));
             String fileLine = "\n I can write error-less Java code :D";
             bufferedWriter.write(fileLine);
 
