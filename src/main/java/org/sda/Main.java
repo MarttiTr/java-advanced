@@ -4,6 +4,9 @@ import org.sda.generics.*;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
 import java.util.*;
 
 public class Main {
@@ -152,13 +155,77 @@ public class Main {
 
         // File writing
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(absoluteFile));
+            FileWriter fileWriter = new FileWriter(absoluteFile, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String fileLine = "\n I can write error-less Java code :D";
             bufferedWriter.write(fileLine);
+            bufferedWriter.flush();
+            bufferedWriter.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // I/O Serializzation: Writing an object to a file
+        String fileName = "file.ser";
+
+        try{
+            FileOutputStream file = new FileOutputStream(fileName);
+            ObjectOutputStream outputStream = new ObjectOutputStream(file);
+
+            outputStream.writeObject(fruit);
+            outputStream.close();
+            file.close();  // Closing the file
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Deserialization: To get/read an object from a file.
+        Fruit deserializedFruit = null;
+
+        try{
+            FileInputStream file = new FileInputStream(fileName);
+            ObjectInputStream inputStream = new ObjectInputStream(file);
+
+            deserializedFruit =(Fruit) inputStream.readObject();
+
+            inputStream.close();
+            file.close();
+
+            System.out.println(deserializedFruit.toString());
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        // New I/O (From java 8+...)
+        Path absolutePath = Paths.get("C:\\Users\\37256\\main\\java-advanced\\src\\main\\resources\\myText.txt");
+        Path relativePath = Paths.get("myText.txt");
+
+        try {
+            //File reading - For reading-writing we use List<String>
+            List<String> fileLines = Files.readAllLines(absolutePath, StandardCharsets.UTF_8);
+
+            //Just to print the file which was read above
+            for(String fileLine: fileLines) {
+                System.out.println(fileLine);
+            }
+
+            //File writing
+            List<String> fileLinesToWrite = List.of("I love Java!", "Estonian is my country!");
+            Files.write(absolutePath, fileLinesToWrite, StandardOpenOption.APPEND); // Append lisab vanale failile selle uue osa mis lisada tahame otsa.
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }
